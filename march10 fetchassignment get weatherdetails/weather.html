@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getweather</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .nav{
+            background-color: black;
+            width: 100%;
+            height: 90px;
+        }
+        #search{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70px;
+            background-color: rgb(219, 219, 223);
+        }
+        #city{
+            height: 30px;
+            width: 40%;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border: none;
+        }
+        #button{
+            height: 30px;
+            width: 10%;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border: none;
+            background-color: rgb(14, 14, 29);
+            color: white;
+        }
+        #weather{
+            margin-top: 10px;
+            display: flex;
+            height: 490px;
+        }
+        #weatherdetail{
+            width: 50%;
+            margin-top: 30px;
+            margin-left: 100px;
+        }
+        #gmap_canvas{
+            width: 50%;
+            margin-top: 20px;
+            /* height: 400px; */
+        }
+        #gmap_canvas iframe{
+            width: 90%;
+            height: 400px;
+        }
+
+    </style>
+</head>
+<body>
+ <div class="nav">
+
+ </div>
+ <div id="body">
+    <div id="search">
+        <input type="text"  id="city" placeholder="Enter Locations name">
+        <button id="button" onclick="getmap()">Search</button>
+    </div>
+    <div id="weather">
+        <div id="weatherdetail">
+
+        </div>
+       
+     <div id="gmap_canvas">
+
+     </div>
+       
+    </div>
+
+
+ </div>
+ <div class="nav">
+ </div>   
+</body>
+<script>
+
+function getmap(){
+
+var location = document.getElementById("city").value;
+ getdata(location);
+}
+
+async  function getdata(location){
+    document.getElementById("weatherdetail").innerHTML = "";
+    document.getElementById("gmap_canvas").innerHTML = "";
+var url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=ad8e414efb3bd626752a91080a58ed39`
+console.log(url)
+
+    try{
+        var res = await fetch(url);
+        var data = await res.json();
+        console.log(data)
+        var tempdetail = (data.main)
+        var name = document.createElement("h1");
+         name.innerText = data.name ;
+         var feellike = document.createElement("h3");
+         feellike.innerText = "Feelslike : " + tempdetail.feels_like ;
+        var temp = document.createElement("p");
+        temp.innerText = "Avg. Temperature : " + tempdetail.temp;
+        var mintemp = document.createElement("p");
+        mintemp.innerText = "Min-Temperature : " + tempdetail.temp_min;
+        var maxtemp = document.createElement("p");
+        maxtemp.innerText = "Max-temperature : " +  tempdetail.temp_max;
+        var pressure = document.createElement("p");
+        pressure.innerText = "Pressure : "  + tempdetail.pressure;
+        var description = document.createElement("h4");
+        description.innerText = "Description : " + data.weather[0].description ;
+
+        document.getElementById("weatherdetail").append( name , feellike , description , temp , mintemp , maxtemp , pressure);
+
+        let iframe = document.createElement("iframe");
+          iframe.src  = `https://maps.google.com/maps?q=${location}&t=&z=13&ie=UTF8&iwloc=&output=embed` ;
+
+         document.getElementById("gmap_canvas").append(iframe);
+
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+</script>
+</html>

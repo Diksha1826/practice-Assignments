@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>get movie details</title>
+    <style>
+      * {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        width: 100%;
+        height: 50px;
+        background-color: black;
+        margin-bottom: 100px;
+        display: flex;
+      }
+
+      ul {
+        display: flex;
+        width: 30%;
+        margin-left: 1050px;
+      }
+      li {
+        list-style: none;
+        padding: 20px;
+        color: white;
+      }
+      #logo {
+        color: white;
+        font-size: 30px;
+        padding-top: 10px;
+        padding-left: 20px;
+      }
+      #getmovie {
+        width: 25%;
+        margin: auto;
+      }
+      #background {
+        background: linear-gradient(
+          217deg,
+          rgba(255, 0, 0, 0.8),
+          rgba(255, 0, 0, 0) 95.71%
+        );
+        height: 100px;
+      }
+      #buttonndsearch {
+        display: flex;
+      }
+      #buttonndsearch button {
+        background-color: rgb(66, 4, 36);
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+        margin-left: 10px;
+      }
+      #moviedetail {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      #moviedetail img {
+        /* width: 100%; */
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav style="margin-bottom: 0px">
+      <h3 id="logo">MOVIE FETCH</h3>
+      <ul>
+        <li>Home</li>
+        <li onclick="login()">Login</li>
+        <li onclick="signup()">Signup</li>
+      </ul>
+    </nav>
+    <div id="background">
+      <div id="getmovie">
+        <h2>Type Here to get Details of a Movie</h2>
+        <div id="buttonndsearch">
+          <input type="text" id="search" placeholder="Type a movies name" />
+          <button id="button" onclick="getdata()">Search</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="moviedetail"></div>
+  </body>
+
+  <script>
+    var apikey = "7f79f196";
+    async function getdata() {
+      document.getElementById("moviedetail").innerHTML = "";
+      var movie = document.getElementById("search").value;
+      let url = "https://www.omdbapi.com/?apikey=7f79f196" + "&s=" + movie;
+      console.log(url);
+      try {
+        var res = await fetch(url);
+        var data = await res.json();
+        var movdata = data.Search;
+        console.log(movdata);
+        if (movdata == undefined) {
+          const movdiv = document.getElementById("moviedetail");
+          movdiv.style.fontSize = "40px";
+          movdiv.style.width = "50%";
+          movdiv.style.marginTop = "50px";
+          movdiv.style.marginLeft = "50px";
+          movdiv.style.display = "block";
+          movdiv.innerHTML = "Movie Not found .........";
+        } else {
+          appenddata(movdata);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    function appenddata(movdata) {
+      movdata.sort(function(a,b){
+        return(a.Year) - (b.Year);
+      });
+      movdata.map(function (elem) {
+        let Poster = document.createElement("img");
+        if (elem.Poster === "N/A"){
+          Poster.setAttribute(
+            "src",
+            "https://images.pexels.com/photos/3342739/pexels-photo-3342739.jpeg?auto=compress&cs=tinysrgb&w=600"
+          );
+        } else {
+          Poster.setAttribute("src", elem.Poster);
+        }
+        let Title = document.createElement("h3");
+        Title.innerText = elem.Title;
+        let Type = document.createElement("p");
+        Type.innerText = elem.Type;
+        let Year = document.createElement("p");
+        Year.innerText = elem.Year;
+        let div = document.createElement("div");
+        div.append(Poster, Title, Type, Year);
+        document.getElementById("moviedetail").append(div);
+      });
+    }
+  </script>
+</html>

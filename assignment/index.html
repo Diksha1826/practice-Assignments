@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>promise Mc donalds</title>
+    <style>
+      * {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        width: 100%;
+        height: 50px;
+        background-color: black;
+        margin-bottom: 100px;
+        display: flex;
+      }
+
+      ul {
+        display: flex;
+        width: 30%;
+        margin-left: 1050px;
+      }
+      li {
+        list-style: none;
+        padding: 20px;
+        color: white;
+      }
+      #logo {
+        color: white;
+        font-size: 30px;
+        padding-top: 10px;
+        padding-left: 20px;
+      }
+      #slideshow {
+        width: 100%;
+        height: 400px;
+      }
+      #order h2 {
+        margin-bottom: 20px;
+      }
+      #order {
+        width: 20%;
+        margin: auto;
+      }
+      #orderfood {
+        display: flex;
+        justify-content: space-around;
+        width: 70%;
+      }
+      #orderfood button {
+        background-color: rgb(92, 27, 27);
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      #orderfood select {
+        border-radius: 5px;
+        margin: 0 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav style="margin-bottom: 0px">
+      <h3 id="logo">BURGER KING</h3>
+      <ul>
+        <li>Home</li>
+        <li onclick="login()">Login</li>
+        <li onclick="signup()">Signup</li>
+      </ul>
+    </nav>
+    <div id="slideshow"></div>
+    <div id="order">
+      <h2>Order Your Food Here</h2>
+      <div id="orderfood">
+        <select id="items">
+          <option value="--">--select--</option>
+          <option value="burger">Burger</option>
+          <option value="ice-cream">Ice-cream</option>
+          <option value="fries">Fries</option>
+          <option value="tacos">Tacos</option>
+        </select>
+        <button id="button">Order food</button>
+      </div>
+    </div>
+
+    <div id="orderedfood"></div>
+  </body>
+  <script>
+    var slideimage = [
+      "https://burgerking-image.s3.amazonaws.com/products/Home/web/1x_web_20210406053228377130_1440x300jpg",
+      "https://burgerking-image.s3.amazonaws.com/products/Home/web/1x_web_20211109115920000185_1440x300jpg",
+      "https://burgerking-image.s3.amazonaws.com/products/Home/web/1x_web_20210427105418426638_1440x300jpg",
+      "https://burgerking-image.s3.amazonaws.com/products/Home/web/1x_web_20211006080239254637_1440x300jpg",
+    ];
+    var div = document.getElementById("slideshow");
+    var image = document.createElement("img");
+    image.setAttribute("src", slideimage[0]);
+
+    var i = 1;
+    setInterval(function () {
+      image.setAttribute("src", slideimage[i]);
+      i++;
+      if (i == slideimage.length) {
+        i = 0;
+      }
+    }, 2000);
+    div.append(image);
+
+    document.getElementById("button").addEventListener("click", function () {
+      askorder();
+    });
+
+    function askorder() {
+      document.getElementById("orderedfood").innerText =
+        "wait getting your order ready ..................";
+      let status = "open";
+      new Promise(function (resolve, reject) {
+        let time = Math.random() * 10000;
+        if (status === "open") {
+          resolve(
+            setTimeout(function () {
+              let fooditem = document.getElementById("items").value;
+              var divorder = document.getElementById("orderedfood");
+              divorder.innerHTML = "";
+              var imageorder = document.createElement("img");
+              if (fooditem == "burger") {
+                imageorder.setAttribute(
+                  "src",
+                  "https://insanelygoodrecipes.com/wp-content/uploads/2020/05/Burger-with-fries-1024x536.png"
+                );
+                divorder.append(imageorder);
+              } else if (fooditem === "fries") {
+                imageorder.setAttribute(
+                  "src",
+                  "https://www.cafechococraze.com/wp-content/uploads/fries.jpg"
+                );
+                divorder.append(imageorder);
+              } else if (fooditem === "ice-cream") {
+                imageorder.setAttribute(
+                  "src",
+                  "https://www.biggerbolderbaking.com/wp-content/uploads/2015/04/BBB21-Ice-Cream-Thumbnail-v.1.jpg"
+                );
+                divorder.append(imageorder);
+              } else if (fooditem === "tacos") {
+                imageorder.setAttribute(
+                  "src",
+                  "https://d4t7t8y8xqo0t.cloudfront.net/resized/750X436/eazytrendz%2F2483%2Ftrend20190708052438.jpg"
+                );
+                divorder.append(imageorder);
+              } else {
+                alert("invalid food item");
+              }
+            }, time)
+          );
+        } else {
+          reject("order not available");
+        }
+      });
+    }
+  </script>
+</html>

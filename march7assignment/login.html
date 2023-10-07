@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="commonstyle.css">
+    <style>
+        h1{
+            text-align: center;
+            padding-top: 100px;
+            margin-bottom: 50px;
+        }
+        form{
+            margin-top: 0;
+            width: 70% ;
+            height: 300px;
+            margin: auto;
+        }
+        form input{
+            height: 30px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button{
+            background-color: rgb(39, 93, 174);
+            color: white;
+            height: 30px;
+            width: 60px;
+            margin-left: 120px;
+        }
+        #container{
+            width: 30%;
+            /* border: 2px solid black; */
+            box-shadow: 2px 2px 20px 3px grey;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li onclick="home()">Home</li>
+            <li>Login</li>
+            <li onclick="signup()">Signup</li>
+        </ul>
+    </nav>
+ 
+    <div id="container">
+    <h1>Login</h1>
+    <form action="">
+       <input type="email" name="" id="email" required placeholder="Enter Your Email">
+       <input type="password" name="" id="password" required placeholder="Enter Your Password">
+       <button type="submit">Submit</button>
+    </form>
+</div>
+    
+</body>
+<script>
+    function home(){
+        window.location.href = 'index.html'
+    }
+    function signup(){
+        window.location.href = 'signup.html'
+    }
+
+    document.querySelector("form").addEventListener("submit" , function(e){
+        assignlogin(e);
+    })
+
+function assignlogin(e){
+    e.preventDefault();
+    var email = document.getElementById("email").value ;
+    var password = document.getElementById("password").value ;
+
+    var data = JSON.parse(localStorage.getItem("assignmentsignupdetails"));
+    // var flag = false ;
+    for(var i=0;i<data.length;i++){
+        if(email == data[i].email && password == data[i].password){
+            window.location.href = "index.html";
+            return;
+
+        }
+        else{
+            alert("Invalid Credentials");
+        }
+        
+    }
+    
+}
+ 
+
+</script>
+</html>

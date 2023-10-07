@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="commonstyle.css">
+    <style>
+        div{
+            width: 100%;
+        }
+        div img{
+            height : 550px;
+            width : 100%;
+        }
+        #movies{
+            display: grid;
+            grid-template-columns: repeat(3 , 1fr);
+            gap: 20px;
+        }
+        #movies img{
+            height: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav style="margin-bottom: 0px;">
+        <ul>
+            <li>Home</li>
+            <li onclick="login()">Login</li>
+            <li onclick="signup()">Signup</li>
+        </ul>
+    </nav>
+    <div>
+
+    </div>
+    <div id="sort">
+        <button id="hi_low">Sort Hi_Low</button>
+        <button id="low_hi">Sort Low_Hi</button>
+    </div>
+    <div id="movies">
+
+    </div>
+    
+</body>
+<script>
+    function login(){
+        window.location.href = 'login.html'
+    }
+    function signup(){
+        window.location.href = 'signup.html'
+    }
+
+    var imageslide = [
+        {     image: "https://media.comicbook.com/2019/08/spiderman-1185098.jpeg?auto=webp&width=500&height=738&crop=500:738,smart" ,
+        } ,
+        {
+              image: "https://static1.srcdn.com/wordpress/wp-content/uploads/2019/06/Iron-Man-2.jpg?q=50&fit=crop&w=740&h=1091&dpr=1.5",       
+            
+        },
+        { 
+              image: "https://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg", 
+        },
+    ]
+    localStorage.setItem("images" , JSON.stringify(imageslide));
+
+
+
+    let div = document.querySelector("div");
+    let image1 = document.createElement("img");
+  
+    var data = JSON.parse(localStorage.getItem("images"))
+    console.log(data);
+    image1.src = data[0].image;
+
+    i = 1;
+    setInterval(function(){
+        image1.setAttribute("src" , data[i].image);
+        i++;
+        if(i==data.length){
+            i=0;
+        }
+        
+    }, 3000);
+    div.append(image1);
+
+    
+var movies = [
+{
+    image: "https://media.comicbook.com/2019/08/spiderman-1185098.jpeg?auto=webp&width=500&height=738&crop=500:738,smart" ,
+    name: "Spiderman: Far from Home" ,
+    rating: "9.5" ,
+    type: "Action, Adventure, Sci-fi" ,
+} ,
+
+{ 
+image: "https://pbs.twimg.com/media/FLg0HNvXoAMiSXE.jpg",
+name: "Doctor Strange",
+rating: "9",
+type: "Action, Adventure, Sci-fi",
+} ,
+
+{
+image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD4fwBRP85_xPA3rm4GArz6IKo8Y9upb7Q7w&usqp=CAU",
+name: "The Incredible Hulk",
+rating: "6.7",
+type: "Action, Adventure, Sci-fi",
+} ,
+
+{
+image: "https://static1.srcdn.com/wordpress/wp-content/uploads/2019/06/Iron-Man-2.jpg?q=50&fit=crop&w=740&h=1091&dpr=1.5",
+name: "Ironman-2",
+rating: "8.8",
+type: "Action, Adventure, Sci-fi",
+} ,
+
+{
+image: "https://i2.wp.com/raisingwhasians.com/wp-content/uploads/2015/06/Ant-Man-Avengers-movie-poster.jpg",
+name: "Ant-Man" ,
+rating: "8",
+type: "Action, Adventure, Sci-fi",
+} ,
+
+{
+image: "https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg",
+name: "Black Widow",
+rating: "7.8",
+type: "Action, Adventure, Sci-fi",
+},
+
+{
+image: "https://rukminim1.flixcart.com/image/416/416/jr0y9ow0/poster/m/a/s/medium-venom-marvel-movie-poster-multicolour-13-x-19-inch-matte-original-imafcwzwnz8zxz8c.jpeg?q=70",
+name: "Venom",
+rating: "8.1" ,
+type: "Action, Adventure, Sci-fi",
+} ,
+
+{
+image: "https://i.pinimg.com/originals/95/a8/03/95a803a0b195772069064a1b4bcad5a8.png",
+name: "Avengers: Infinity War",
+rating: "9.8",
+type: "Action, Adventure, Sci-fi",
+} ,
+
+{
+image: "https://media.comicbook.com/2017/10/thor-movie-poster-marvel-cinematic-universe-1038890.jpg",
+name: "THOR",
+rating: "8.5",
+type: "Action, Adventure, Sci-fi" ,
+},
+]
+
+
+  localStorage.setItem("moviearr" , JSON.stringify(movies));
+
+
+// document.getElementById("movies").innerHTML = "";
+// var moviearr = JSON.parse(localStorage.getItem("moviearr"));
+
+mapingmovies();
+
+function mapingmovies(){
+    
+document.getElementById("movies").innerHTML = "";
+var moviearr = JSON.parse(localStorage.getItem("moviearr"));
+
+moviearr.map(function(elem){
+    let div = document.createElement("div");
+    div.style.display = "flex";
+    div.style.boxShadow = "2px 2px 5px 2px grey";
+    var movieimg = document.createElement("img");
+    let div2 = document.createElement("div");
+
+movieimg.setAttribute("src" , elem.image);
+var name = document.createElement("h3");
+name.innerText = elem.name;
+var rating = document.createElement("p");
+rating.innerText = elem.rating;
+var type = document.createElement("p");
+type.innerText = elem.type;
+div2.append(name , rating , type);
+div.append(movieimg , div2);
+document.getElementById("movies").append(div);
+})
+}
+//sorting low to high
+document.getElementById("low_hi").addEventListener("click" , function(){
+    sortlowtohi();
+})
+
+function sortlowtohi(){
+  movies.sort(function(a, b) {
+  return (a.rating) - (b.rating);
+});
+localStorage.setItem("moviearr" , JSON.stringify(movies));
+mapingmovies()
+}
+
+//sorting high to low
+document.getElementById("hi_low").addEventListener("click" , function(){
+    sorthitolow();
+})
+
+function sorthitolow(){
+  movies.sort(function(a, b) {
+  return (b.rating) - (a.rating);
+});
+localStorage.setItem("moviearr" , JSON.stringify(movies));
+mapingmovies()
+}
+
+</script>
+</html>
+
