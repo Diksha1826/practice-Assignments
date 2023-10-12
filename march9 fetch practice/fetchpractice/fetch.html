@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4 , 25%);
+            gap: 20px;
+        }
+        img{
+            width: 25%;
+        }
+        #container div{
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    
+</body>
+<script>
+
+    // let x = fetch();
+    // console.log("x:" , x); //it written us a promise therefore fetch is a promise
+    
+
+    let url = 'https://fakestoreapi.com/products'
+
+//    let mypromise =  fetch(url);
+//     mypromise.then(function(res){
+//         // console.log("res:" , res)
+//         return res.json()
+
+//     }).then(function(res){
+//         console.log(res)
+//     });
+
+
+     async function getdata () 
+    {
+        try{
+            let res = await fetch(url)
+        let data = await res.json()
+        console.log('data:' , data);
+        appendproducts(data);
+        }
+        catch(err){
+            console.log("error" , err)
+        }
+    }
+    getdata();
+
+    function appendproducts(data){
+        data.forEach(function(elem){
+            let div = document.createElement('div');
+            let image = document.createElement('img');
+            image.src = elem.image;
+            let title = document.createElement('h3');
+            title.innerText = elem.title;
+            let desc = document.createElement('p');
+            desc.innerText = elem.description;
+            let price = document.createElement('p');
+            price.innerText = elem.price;
+
+            div.append(image , title , price , desc);
+            document.getElementById("container").append(div);
+        })
+    }
+
+
+
+
+
+
+
+
+
+</script>
+</html>

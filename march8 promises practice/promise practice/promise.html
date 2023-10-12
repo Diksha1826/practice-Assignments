@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promises</title>
+</head>
+<body>
+    <select id="food">
+        <option value="fries">Fries</option>
+        <option value="burger">Burger</option>
+        <option value="coke">Coke</option>
+        <option value="Vadapav">vadapav</option>
+    </select>
+
+    <button onclick="orderfood()">Order</button>
+    
+</body>
+<script>
+
+
+//promises
+// let passexam = false;
+// let mypromise = new Promise(function(resolve , reject){
+   
+//     if(passexam){
+//         resolve('bike');
+//     }
+//     else{
+//         reject('paragon');
+//     }
+// });
+
+// mypromise.then(function(response){
+//     console.log(response);
+// })
+
+// mypromise.catch(function(error){
+//     console.log(error);
+
+// })
+
+
+// console.log(mypromise);
+// var prom = new Promise(function(resolve, reject){
+//     if(0){
+//         resolve('your promise resolved')
+//     }
+//     else{
+//         reject('your promise rejected')
+//     }
+// })
+
+// prom.then(function(response){
+//     console.log(response);
+// })
+
+// prom.catch(function(error){
+//  console.log(error);
+// })
+
+//.then , resolve() - positive ;
+//.catch , reject() - negative ;
+
+function get(id){
+    return document.getElementById(id).value ;
+}
+
+async function orderfood(){
+
+    let food = get("food");
+    let status = 'open';
+    let foodpromise = new Promise(function(resolve , reject){
+        let time = Math.random() * 10000 ;
+        if(status === 'close'){
+            reject('Shop closed , ghar jao');
+        }
+        else{
+            setTimeout(function(){
+            resolve('your ' + food + ' is ready');
+        }, time);
+        }
+       
+
+    });
+
+    // foodpromise.then(function(response){ //positive one way
+    //     console.log(response);
+    
+    // })
+    // foodpromise.catch(function(error){ //negative
+    //     console.log(error);
+    // })
+
+
+  try{
+    let response = await foodpromise // positive otherway
+    console.log(response);
+  }
+  catch(error){            //negative
+  console.log(error)
+  }
+}
+
+
+
+</script>
+</html>

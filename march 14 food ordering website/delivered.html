@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+       #navbar{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        height: 50px;
+        background-color: black;
+        color: white;
+
+       }
+       #navbar h2{
+          margin-left: 40px ;
+       }
+       ul{
+        display: flex;
+        width: 40%;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style: none;
+       }
+       #body{
+        width: 100%;
+        text-align: center;
+        margin-top: 200px;
+       }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <h2>YUMMY TUMMY</h2>
+        <ul>
+            <li>Login</li>
+            <li>Signin</li>
+            <li>menu</li>
+            <li>cart</li>
+        </ul>
+    </nav>
+
+    <div id="body">
+
+    </div>
+    
+</body>
+<script>
+    var name = JSON.parse(localStorage.getItem("checkoutdetail"));
+    function delivery(text , delay){
+        setTimeout(function(){
+            document.getElementById("body").innerHTML = "";
+            var h2 = document.createElement("h2");
+            h2.innerText = name + text;
+            document.getElementById("body").append(h2);
+        },delay);
+    }
+   
+    delivery(" Your Order is accepted" , 0);
+    delivery(" Your Order is being cooked" , 3000);
+    delivery(" Your Order is ready" , 8000);
+    delivery(" Your Order is out for delivery" , 10000);
+    delivery(" Your Order is delivered" , 12000);
+
+    function gif(){    
+        setTimeout(function(){
+            let image = document.createElement("img");
+            image.setAttribute("src" , "https://i.gifer.com/7efs.gif")
+            document.getElementById("body").append(image);
+        },13000);
+        setTimeout(function(){
+            window.location.href = "foodminiapp.html"
+        },15000);
+    }
+    gif();
+
+    
+
+
+
+
+
+
+</script>
+</html>

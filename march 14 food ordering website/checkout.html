@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+       #navbar{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        height: 50px;
+        background-color: black;
+        color: white;
+       }
+       #navbar h2{
+          margin-left: 40px ;
+       }
+       ul{
+        display: flex;
+        width: 40%;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style: none;
+       }
+       form{
+        padding-top: 100px;
+        width: 30%;
+        margin: auto;
+       }
+       input{
+        height: 30px;
+        margin-bottom: 8px;
+       }
+       button{
+        height: 40px;
+        width: 70%;
+        margin-left: 70px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        margin-top: 20px;
+       }
+       #checkbox{
+        height: 15px;
+        width: 20%;
+       }
+       #total{
+        width: 50%;
+        font-size: 30px;
+        margin-top: 30px;
+        padding-left: 30px;
+       }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <h2>YUMMY TUMMY</h2>
+        <ul>
+            <li>Login</li>
+            <li>Signin</li>
+            <li>menu</li>
+            <li>cart</li>
+        </ul>
+    </nav>
+    <div id="total">
+
+    </div>
+
+    <div id="body">
+        <form action="">
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <input type="number" placeholder="Enter your Contact Number" required>
+            <input type="email" name="" id="" placeholder="Enter you Email" required>
+            <input type="text" placeholder="Enter your Address" required>
+            <input type="checkbox" name="" id="checkbox" required>
+            <label for="payment">Cash on Delivery</label>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+<script>
+    var total = JSON.parse(localStorage.getItem("foodprice"));
+    document.getElementById("total").innerText = `Total Bill : ₹ ${total} .`
+
+    document.querySelector("form").addEventListener("submit" , function(e){
+        setcheckoutdetail(e);
+    })
+
+    function setcheckoutdetail(e){
+        e.preventDefault();
+        var arr =  [] ;
+        let name = document.getElementById("name").value;
+        arr.push(name);
+        console.log(arr);
+        localStorage.setItem("checkoutdetail" , JSON.stringify(arr));
+        window.location.href = "delivered.html";
+    }
+
+</script>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>closure movie details</title>
+    <style>
+      * {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        width: 100%;
+        height: 50px;
+        background-color: black;
+        margin-bottom: 100px;
+        display: flex;
+      }
+
+      ul {
+        display: flex;
+        width: 30%;
+        margin-left: 1050px;
+      }
+      li {
+        list-style: none;
+        padding: 20px;
+        color: white;
+      }
+      #logo {
+        color: white;
+        font-size: 30px;
+        padding-top: 10px;
+        padding-left: 20px;
+      }
+      #getmovie {
+        width: 25%;
+        margin: auto;
+      }
+      #background {
+        background: linear-gradient(
+          217deg,
+          rgba(255, 0, 0, 0.8),
+          rgba(255, 0, 0, 0) 95.71%
+        );
+        height: 100px;
+      }
+      #moviedetail {
+       height: 150px;
+       width: 200px; 
+       overflow-y: scroll;
+       background-color: black;
+       position: absolute;
+       z-index: 2;
+      }
+
+      #moviedetail img{
+        width: 40px;
+        height: 50px;
+      }
+      #moviedetail div{
+        z-index: 1;
+        display: flex;
+        background-color: rgb(6, 7, 10);
+        color: white;
+        border-bottom: 5px solid white;
+      }
+      #moviedetail div:hover{
+        background-color:  rgb(16, 19, 30) ;
+
+      }
+      #buttonndsearch{
+        width: 200px;
+        margin: auto;
+      }
+      #clickmov{
+        width: 50%;
+        height: 700px;
+        margin: auto;
+        color: white
+       
+;
+      }
+      #backgroundimg{
+        position: relative;
+        /* z-index: 1; */
+        background: url("https://t3.ftcdn.net/jpg/05/52/90/10/240_F_552901001_iVDRtsrQOjVvyH3foTMEYW2t0YalwYCL.jpg") no-repeat center center/cover;
+        opacity: .9;
+      }
+      #clickmov h2{
+        margin-bottom: 30px;
+        padding-top: 40px;
+      }
+
+      #clickmov img{
+        height: 500px;
+        width: 80%;
+        margin: auto;
+
+      }
+    </style>
+  </head>
+  <body>
+    <nav style="margin-bottom: 0px">
+      <h3 id="logo">MOVIE FETCH</h3>
+      <ul>
+        <li>Home</li>
+        <li>Login</li>
+        <li>Signup</li>
+      </ul>
+    </nav>
+    <div id="background">
+      <div id="getmovie">
+        <h2>Type Here to get Details of a Movie</h2>
+        <div id="buttonndsearch">
+          <input type="text" id="search" placeholder="Type a movies name" oninput="debounc(main , 1000)"/>
+          <div id="moviedetail">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="backgroundimg">
+    <div id="clickmov">
+
+    </div>
+  </div>
+  </body>
+
+  <script>
+    let timerid;
+    let movie = document.getElementById("moviedetail");
+    movie.style.display = "none";
+
+
+    async function getdata(){
+      let input = document.querySelector("#search").value;
+      try{
+     let res = await fetch(`http://www.omdbapi.com/?apikey=7f79f196&s=${input}`);
+     let data = await res.json();
+     let darr = data.Search ;
+     return darr ;
+      }
+      catch(err){
+        console.log(err);
+      }
+     }
+
+     function appenddata(data){
+      movie.innerHTML = "";
+      movie.style.display = "block";
+      movie.style.zIndex = ".5";
+      data.forEach(function(elem){
+        let p = document.createElement("p");
+        p.innerText = elem.Title;
+        let img = document.createElement("img");
+        if(elem.Poster == "N/A"){
+           img.setAttribute("src" , "https://images.pexels.com/photos/3342739/pexels-photo-3342739.jpeg?auto=compress&cs=tinysrgb&w=600")
+        }
+        else{
+          img.setAttribute("src" , elem.Poster);
+
+        }
+        let div = document.createElement("div");
+        div.append(p , img)
+        movie.append(div);
+
+        div.addEventListener("click" , function(){
+           getp(elem);
+        })
+      })
+     }
+     function getp(elem){
+      let clickmov = document.getElementById("clickmov");
+      document.querySelector("#search").value = elem.Title
+
+      clickmov.innerHTML = "";
+      console.log(elem)
+      let title = document.createElement("h2");
+      title.innerText = elem.Title ;
+       let poster = document.createElement("img");
+       if(elem.Poster === "N/A"){
+           poster.setAttribute("src" , "https://images.pexels.com/photos/3342739/pexels-photo-3342739.jpeg?auto=compress&cs=tinysrgb&w=600")
+        }
+        else{
+          poster.setAttribute("src" , elem.Poster );
+
+        }
+       let year = document.createElement("p");
+       year.innerText = elem.Year;
+       let type = document.createElement("p");
+       type.innerText = elem.Type;
+
+       clickmov.append(title , poster , type , year);
+       
+     }
+
+     async function main(){
+      try{
+        var arr = await getdata();
+        if(arr === undefined){
+         movie.style.display = "none";
+         movie.innerHTML = "";
+          return false;
+        }
+        appenddata(arr);
+      }
+      catch(err){
+        console.log(err);
+      }
+     }
+
+     function debounc(func , delay){
+      if(timerid){
+        clearTimeout(timerid);
+      }
+      timerid = setTimeout(function(){
+        func();
+      },delay);
+     }
+
+
+    
+   
+  </script>
+</html>

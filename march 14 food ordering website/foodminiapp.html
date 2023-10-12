@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>food delivery</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+       #navbar{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        height: 50px;
+        background-color: black;
+        color: white;
+
+       }
+       #navbar h2{
+          margin-left: 40px ;
+       }
+       ul{
+        display: flex;
+        width: 40%;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style: none;
+       }
+       #body{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) ;
+        gap: 20px;
+        margin-top: 20px;
+       }
+       #body img{
+        width: 100%;
+        height: 300px;
+       }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <h2>YUMMY TUMMY</h2>
+        <ul>
+            <li>Login</li>
+            <li>Signin</li>
+            <li>menu</li>
+            <li id="cart">cart</li>
+            <li id="count"></li>
+        </ul>
+    </nav>
+    <div id="body">
+
+    </div>  
+</body>
+<script>
+
+document.getElementById("cart").addEventListener("click" , function(){
+    window.location.href= "cart.html";
+})
+
+
+async function getdata(){
+    try{
+    let res = await fetch("https://test-apis-one.vercel.app/meals/india");
+    let data = await res.json();
+    console.log(data.data);
+    appenddata(data.data);
+}
+catch(err){
+    console.log(err);
+}
+}
+getdata();
+function appenddata(data){
+    data.forEach(function(elem){
+        var h3 = document.createElement("h3");
+        h3.innerText = elem.dish;
+        var image = document.createElement("img");
+        image.setAttribute("src" , elem.thumbnail);
+        var price = document.createElement("p");
+        price.innerText = elem.price;
+        var button = document.createElement("button");
+        button.innerText = "Add to Cart";
+        var div = document.createElement("div");
+        div.append( image ,h3 , price , button);
+        document.getElementById("body").append(div);
+        button.addEventListener("click" , function(){
+            gotocart(elem);
+        })   
+    })
+}
+
+function gotocart(elem){
+    var arr = JSON.parse(localStorage.getItem("foodcartdata")) || [];
+    var flag = true;
+    for(var i=0;i<arr.length;i++){
+        if(elem.dish === arr[i].dish){
+            flag = false;
+            return;
+        }
+    }
+    if(flag = true){
+        arr.push(elem);
+    }
+    localStorage.setItem("foodcartdata" , JSON.stringify(arr));
+}
+
+</script>
+</html>
