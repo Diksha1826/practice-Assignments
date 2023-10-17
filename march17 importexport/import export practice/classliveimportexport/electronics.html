@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="commonstyle.css">
+</head>
+<body>
+    <div id="header"></div>
+    <div id="data">
+
+    </div>
+   
+    
+</body>
+
+</html>
+<script type="module">
+    import navbar from './components/navbar.js'
+    import {getData , append} from './script/fetchappend.js';
+
+    document.getElementById("header").innerHTML = navbar();
+    let response = await getData(`https://fakestoreapi.com/products/category/electronics`);
+    console.log(response);
+    let body = document.getElementById("data")
+
+    append(response , body );
+
+</script>

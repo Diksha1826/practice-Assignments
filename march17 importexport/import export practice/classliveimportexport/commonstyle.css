@@ -1,0 +1,23 @@
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px black;
+    padding: 0 20px;
+
+}
+.options{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+#data{
+    display: grid;
+    grid-template-columns: repeat(4,20%);
+    gap: 5%;
+    padding: 5%;
+
+}
+img{
+    width: 50% ;
+}

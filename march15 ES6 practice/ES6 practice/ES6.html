@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6prac</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    //constructor function
+
+    // function person(n,a){
+    //     this.name = n ,
+    //     this.age = a
+    // this.showname = function(){
+    //     console.log(this.name);
+    // }
+    // }
+    // // person.prototype.city = "Barsana"; //forshowing prototype using ConstrFunction
+    // const per1 = new person("radha" , 24);
+    // // console.log(per1);
+    // per1.showname();
+
+    
+//ES6 feature making constructor function
+
+    // class person1{
+    //     constructor(n,a){
+    //         this.name = n ,
+    //         this.age = a
+    //     }
+    //     showName(){
+    //         console.log(this.name); //shows in prototype outside of function
+
+    //     }
+    // }
+    // const per2 = new person1("radha" , 24);
+    // console.log(per2);
+    // per2.showName()
+
+    //inheritance in ES6 classes
+
+    // class student extends person1{
+    //     constructor(n,a){
+    //      super(n,a)
+    //      this.role = " student"
+    //     }
+    // }
+
+    // const per3 = new student("ram" , 2500);
+    // console.log(per3)
+
+
+    // class cat{
+    //     constructor(m){
+    //         this.species = "cat"
+    //         this.legs = "4"
+    //         this.furs = true 
+    //         this.type = m 
+    //     }
+    // }
+
+    // class Tiger extends cat{
+    //     constructor(m){
+    //         super(m)
+    //         this.speed = 60
+    //     }
+    // }
+
+    // class leopard extends cat{
+    //     constructor(m){
+    //         super(m) 
+    //         this.speed = 100
+    //         this.height = "5m"
+    //     }
+    // }
+
+
+    // let t1 = new Tiger("mammel");
+    // console.log(t1);
+
+    // let l1 = new leopard("long bodied");
+    // console.log(l1)
+
+    // class whitetiger extends Tiger{
+    //     constructor(m){
+    //         super(m);
+    //         this.name = "Simba";
+    //     }
+    // }
+
+    // let w1 = new whitetiger("snow lover");
+    // console.log(w1);
+
+    class Mystack{
+        constructor(){
+            this.length = 0;
+            this.stack = [];
+        }
+        push(...value){ //returnarr
+            value.forEach((elem)=>{
+            this.stack.push(elem);
+            this.length++;  
+            })
+            console.log(this.stack);
+        }
+        remove(){
+            this.stack.pop();
+            this.length--;
+            console.log(this.stack);
+
+        }
+    }
+
+    let stack = new Mystack();
+    stack.push(26,18,19);
+    stack.push(20);
+    stack.remove();
+    // console.log(stack);
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
