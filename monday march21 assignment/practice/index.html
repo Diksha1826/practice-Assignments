@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="container">
+    <div id="body"></div>
+</div>
+</body>
+<script type="module">
+    import header from "./components/header.js";
+    document.getElementById("navbar").innerHTML = header();
+
+    let input_box =  document.getElementById("search-input");
+    input_box.addEventListener("keypress" , (e)=>{
+        getdata(e);
+    })
+
+    let img = document.getElementById("profile-img");
+
+
+    const getdata = async (e)=>{
+        try{
+            if(e.code === "Enter"){
+            let input = input_box.value;
+            let res =  await fetch(`https://api.github.com/users/${input}/repos`);
+            let data = await res.json();
+            console.log(data);
+            appenddata(data);
+
+            img.src = data[0].owner.avatar_url;
+           }
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
+
+    function appenddata(data){
+        let body =  document.getElementById("body");
+        body.innerHTML = "";
+        data.forEach((elem)=>{
+            
+            let hr = document.createElement("hr");
+            let div1 = document.createElement("div");
+            let div2 = document.createElement("div");
+            let div = document.createElement("div");
+
+            let title = document.createElement("h3");
+            title.innerText = elem.name
+            let visibility = document.createElement("p");
+            visibility.style.border = "1px solid white";
+            visibility.style.padding = "5px";
+            visibility.style.borderRadius = "30px"
+            visibility.style.width = "50px"
+            visibility.style.marginRight = "200px"
+
+            visibility.innerText = elem.visibility
+            div1.append(title , visibility);
+
+            let language = document.createElement("p");
+            language.innerText = elem.language
+            let update = document.createElement("p");
+            update.innerText = elem.updated_at
+            div2.append(language , update);
+
+            div.append(hr , div1 , div2 );
+            body.append(div);
+
+        })
+
+    }
+
+
+</script>
+</html>
+
+<!-- "user_repositories_url": "https://api.github.com/users/{user}/repos" -->

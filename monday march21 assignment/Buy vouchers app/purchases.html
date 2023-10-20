@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>purchases</title>
+    <style>
+    #purchases{
+        width: 100%;
+        height: 100vh;
+        display:grid ;
+        grid-template-columns: repeat(3 , 1fr);
+        gap: 10px;
+    }
+    #purchases div{
+        /* border: 1px solid black; */
+        border-bottom:  5px solid black;
+        box-shadow: 2px 2px 5px rgb(197, 192, 192);
+        padding: 10px;
+    }
+</style>
+</head>
+<body>
+    <h1>Purchases items</h1>
+    <div id="purchases">
+
+    </div>
+</body>
+<script>
+    let data = JSON.parse(localStorage.getItem("purchases"));
+    data.map(function(elem){
+    let title = document.createElement("h4")
+    title.innerText = elem.title
+
+    let price = document.createElement("p");
+    price.innerText = "Price :" + elem.price;
+    
+    let div = document.createElement("div");
+    div.append(title ,price);
+
+    document.getElementById("purchases").append(div);
+})
+
+
+</script>
+</html>

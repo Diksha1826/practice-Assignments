@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wallet</title>
+</head>
+<body>
+    <h1>Add amount</h1>
+    <div>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <button id="addtowallet">Add to wallet</button>
+</div>
+    
+</body>
+<script>
+document.getElementById("addtowallet").addEventListener("click",function(){
+    let arr = JSON.parse(localStorage.getItem("wallet")) || [];
+    let amount = document.getElementById("amount").value ;
+    arr.push(amount)
+    let res =  arr.reduce(function(acc , elem){
+        console.log(elem)
+        return acc + (+elem) ;
+    },0)
+
+   let purc = JSON.parse(localStorage.getItem("purchases"))
+   let purctotl = purc.reduce(function(acc , elem){
+        return acc + (+elem.price);
+    },0);
+
+    let walttl = (+(res) - +(purctotl))
+
+    localStorage.setItem("totalwallet" , JSON.stringify(walttl))
+    localStorage.setItem("wallet" , JSON.stringify(arr));
+})
+
+let purc = JSON.parse(localStorage.getItem("purchases"))
+   let purctotl = purc.reduce(function(acc , elem){
+        return acc + (+elem.price);
+    },0);
+let totalwallet = +(JSON.parse(localStorage.getItem("totalwallet"))) - purctotl ;
+
+
+
+</script>
+</html>

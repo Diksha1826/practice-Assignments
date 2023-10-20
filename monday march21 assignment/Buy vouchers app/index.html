@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main{
+            width: 100%;
+            height: 100vh;
+            display:grid ;
+            grid-template-columns: repeat(3 , 1fr);
+            gap: 10px;
+        }
+        #main div{
+            /* border: 1px solid black; */
+            border-bottom:  5px solid black;
+            box-shadow: 2px 2px 5px rgb(197, 192, 192);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3 id="wallet"></h3>
+    </div>
+    <p><a href="purchases.html">Purchases</a></p>
+    <p><a href="addtowallet.html">wallet</a></p>
+
+    <div id="main">
+        
+    </div>
+    
+</body>
+</html>
+<script>
+let data = [
+  {
+    id: 1,
+    title: "beauty voucher",
+    price: 10795.0,
+  },
+  {
+    id: 2,
+    title: "salon voucher",
+    price: 9777.0,
+  },
+
+  {
+    id: 3,
+    title: "facepack voucher",
+    price: 8295.0,
+  },
+
+  {
+    id: 4,
+    title: "arabic wax voucher",
+    price: 14995.0,
+  },
+  {
+    id: 5,
+    title: "pedicure voucher",
+    price: 10727.0,
+  },
+  {
+    id: 6,
+    title: "spa voucher",
+    price: 8595.0,
+  },
+
+  {
+    id: 7,
+    title: "romanian hot water voucher",
+    price: 9207.0,
+  },
+
+  {
+    id: 8,
+    title: "bikini wax voucher",
+    price: 16147.0,
+  },
+  {
+    id: 9,
+    title: "laser tretment voucher",
+    price: 7377.0,
+  },
+  {
+    id: 10,
+    title: "beauty treatment voucher",
+    price: 14995.0,
+   
+  },
+];
+
+data.map(function(elem){
+    let title = document.createElement("h4")
+    title.innerText = elem.title
+
+    let price = document.createElement("p");
+    price.innerText = "Price :" + elem.price;
+    
+    let purchase = document.createElement("button");
+    purchase.innerText = "Purchase item";
+
+    let div = document.createElement("div");
+    div.append(title ,price , purchase);
+
+    document.getElementById("main").append(div);
+
+    purchase.addEventListener("click" , function(){
+        purchaseditem(elem);
+    })
+})
+
+function purchaseditem(elem){
+    let purc = JSON.parse(localStorage.getItem("purchases"));
+
+    let purchase = JSON.parse(localStorage.getItem("purchases")) || [];
+    purchase.push(elem);
+    localStorage.setItem("purchases" , JSON.stringify(purchase));
+    // document.getElementById("wallet").innerText = "Total wallet amount : " + totalwallet ;
+
+
+   let purctotl = purc.reduce(function(acc , elem){
+        return acc + (+elem.price);
+    },0);
+
+let totalwallet = +(JSON.parse(localStorage.getItem("totalwallet"))) - +(purctotl) ;
+localStorage.setItem("totalwallet" , totalwallet);
+console.log(totalwallet);
+// if(totalwallet <= 0){
+//     // console.log(totalwallet)
+//     alert("less wallet amount");
+// }
+// else{ 
+// }
+// let totalwallet = +(JSON.parse(localStorage.getItem("totalwallet"))) ;
+document.getElementById("wallet").innerText = "Total wallet amount : " + totalwallet ;
+}
+let totalwallet = +(JSON.parse(localStorage.getItem("totalwallet"))) ;
+document.getElementById("wallet").innerText = "Total wallet amount : " + totalwallet ;
+
+</script>
