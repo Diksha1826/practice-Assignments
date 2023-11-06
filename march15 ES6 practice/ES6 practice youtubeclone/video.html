@@ -77,6 +77,12 @@
             display: flex;
             justify-content: space-evenly;
         }
+        #mainvdo{
+            width: 60%;
+        }
+        #description{
+            width: 90%;
+        }
         #sidevdo{
             width: 30%;
             height: 100vh;
@@ -181,7 +187,7 @@
                 <svg enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 10%; height: 100%;"><path d="m12.71 12 8.15 8.15-.71.71L12 12.71l-8.15 8.15-.71-.71L11.29 12 3.15 3.85l.71-.71L12 11.29l8.15-8.15.71.71L12.71 12z"></path></svg>
             </div>
             </div>
-            <div id="lens" onclick="searchvideos()">
+            <div id="lens" onclick="searchvideo()">
                 <svg enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><path d="m20.87 20.17-5.59-5.59C16.35 13.35 17 11.75 17 10c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.75 0 3.35-.65 4.58-1.71l5.59 5.59.7-.71zM10 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path></svg>
             </div>
             <div id="mike">
@@ -193,8 +199,6 @@
                 <svg height="24" style="pointer-events: none; display: block; width: 100%; height: 100%;" viewBox="0 0 24 24" width="24" focusable="false"><path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z"></path></svg>
 
                 <svg enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87zm-1 .42-2-1.88v-5.47c0-2.47-1.19-4.36-3.13-5.1-1.26-.53-2.64-.5-3.84.03C8.15 6.11 7 7.99 7 10.42v5.47l-2 1.88V18h14v-.23z"></path></svg>
-
-
             </div>
         </div>
     </nav>
@@ -234,6 +238,20 @@
     
 </body>
 <script>
+
+function searchvideo(){
+    let inp = document.getElementById("input").value;
+    localStorage.setItem("input" , JSON.stringify(inp));
+    window.location.href = "es.html";
+  }
+
+
+
+
+
+
+    mainvideo();
+    function mainvideo(){
     let data = JSON.parse(localStorage.getItem("utubevideo"));
     let videoId = data[0].id.videoId;
     // let vdo = data[0];
@@ -254,9 +272,8 @@
         iframe.width = "50%";
         iframe.allow = "fullscreen";
         console.log(iframe.src)
-
-       
-       
+}
+     
  const searchvideos = async ()=>{
 // AIzaSyA02Lz5nLEqFie4ifUXVqeAOdl27Z5cRG4
 // AIzaSyA02Lz5nLEqFie4ifUXVqeAOdl27Z5cRG4
@@ -267,10 +284,8 @@ try{
     let data = await res.json();
     let videos = data.items;
     console.log(videos)
-
     appendvideos(videos);
 }
-
 catch(err){
     console.log("err:" , err);
 }
@@ -281,7 +296,7 @@ const appendvideos = (data)=>{
     var div1 = document.getElementById("sidevdo");
     div1.innerHTML = "";
 
-    data.forEach(({ snippet: {title ,channelTitle , thumbnails: {medium}} , id: {videoId}})=>{
+    data.forEach(({ snippet: {description , title ,channelTitle , thumbnails: {medium}} , id: {videoId}})=>{
         let div = document.createElement("div");
         let titles = document.createElement("p");
         titles.innerText = title ;
@@ -296,12 +311,24 @@ const appendvideos = (data)=>{
         thumbnail.src = medium.url;
         div.append( thumbnail , div2)
         div.setAttribute("class" , "sidevdodiv");
+        div1.append(div);       
 
-        div1.append(div);
-        
+        div.addEventListener("click" , function(){
+
+            sidevidotomain({ snippet: {description ,title ,channelTitle , thumbnails: {medium}} , id: {videoId}})
+
+        })
+
     })
 }
 
+function sidevidotomain({ snippet: {description ,title ,channelTitle , thumbnails: {medium}} , id: {videoId}}){
+    var arr = [];
+    arr.push({snippet:{ channelTitle , description ,title } ,id: {videoId}});
+    localStorage.setItem("utubevideo" , JSON.stringify(arr));
+    mainvideo();
+
+}
 
 </script>
 </html>

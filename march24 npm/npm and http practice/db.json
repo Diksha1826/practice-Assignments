@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "dik",
+      "city": "bang"
+    },
+    {
+      "id": 2,
+      "name": "niik",
+      "city": "bang"
+    },
+    {
+      "id": 3,
+      "name": "miiik",
+      "city": "bang"
+    },
+    {
+      "id": 4,
+      "name": "liik",
+      "city": "bang"
+    }
+  ]
+}

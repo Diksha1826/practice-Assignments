@@ -113,7 +113,7 @@
         #popular{
             display: grid;
             grid-template-columns: repeat(3 ,1fr);
-            align-items: center;
+            /* align-items: center; */
             gap: 10px;
         }
         #popular img{
@@ -123,6 +123,63 @@
             width: 85%;
         }
 
+        @media screen and (max-width: 1500px){
+        
+            #popular{
+            display: flex;
+            flex-direction: column;
+            /* grid-template-columns: repeat(1 ,1fr); */
+            /* gap: 10px; */
+        }  
+        #popular img{
+            border-radius: 5px;
+        }
+        #popular div h3{
+            width: 85%;
+        }
+        #sidebar{
+            display: none;
+            /* visibility: hidden; */
+        }
+        #categories{
+            display: none;
+        }
+        #search input{
+            width: 50px;
+            border: none;
+        }
+        #search div{
+            display: flex;
+            width: 200px;
+            justify-content: space-between;
+            padding: 2px;
+
+        }
+        #nav{
+            width: 300px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        #sidenav #sidedash{
+            width: 15px;
+            margin-right: 3px;
+        }
+        #sidenav div{
+            height: 25px;
+            width: 50px;
+        }
+        #mike{
+            display: none;
+        }
+        #cornernav{
+            display: none;
+        }
+
+        }
+
     </style>
 </head>
 <body>
@@ -130,7 +187,7 @@
     
     <nav id="nav">
         <div id="sidenav">
-            <div>
+            <div id="sidedash">
                 <svg height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path></svg>
             </div>
             <div>
@@ -249,7 +306,6 @@
     
 </body>
 <script>
-
   function searchvideos(){
     let inp = document.getElementById("input").value;
     localStorage.setItem("input" , JSON.stringify(inp));
@@ -276,7 +332,8 @@
     appenddata();
 
    function appendtobody(appendelem){
-    appendelem.forEach(({snippet:{ title , thumbnails:{medium}}})=>{
+    localStorage.setItem("input" , JSON.stringify("mostPopular"));
+    appendelem.forEach(({snippet:{channelTitle , description , title , thumbnails:{medium}} ,id: {videoId}})=>{
         let div = document.createElement("div");
         let thumbnail = document.createElement("img");
         thumbnail.src = medium.url;
@@ -284,8 +341,19 @@
         Title.innerText = title;
         div.append(thumbnail , Title);
         document.getElementById("popular").append(div);
+
+        div.addEventListener("click" , function(){
+            setvideotolocal({snippet:{channelTitle , description ,title} ,id: {videoId}})
+        })
     })
    }
+
+function setvideotolocal({snippet:{channelTitle , description ,title } ,id: {videoId}}){
+    var arr = [];
+    arr.push({snippet:{ channelTitle , description ,title } ,id: {videoId}});
+    localStorage.setItem("utubevideo" , JSON.stringify(arr));
+    window.location.href = "video.html"
+}
 
 
 
