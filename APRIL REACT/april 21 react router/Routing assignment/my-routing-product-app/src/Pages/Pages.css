@@ -1,0 +1,16 @@
+/* products */
+.Productswrapper{
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    gap: 20px;
+}
+.Productswrapper .singleproduct{
+    /* border: 2px solid black; */
+    box-shadow: 2px 2px 2px black;
+    background-color: rgb(247, 223, 223);
+}
+
+.price{
+    display: flex;
+    justify-content: space-evenly;
+}

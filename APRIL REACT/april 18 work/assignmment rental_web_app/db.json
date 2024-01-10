@@ -1,0 +1,63 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "Name": "Radhika Palace",
+      "Owners_Name": "Radhika",
+      "Address": "Har Shyam Vihar",
+      "Area_Code": 312,
+      "Rent": 3244,
+      "Tenants": "married",
+      "image": "hghgdgf"
+    },
+    {
+      "Name": "ramvatika",
+      "Owners_Name": "ram",
+      "Address": "Ayodhya",
+      "Area_Code": 12,
+      "Rent": 3452,
+      "Tenants": "Married",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnfBD8oiQixFsc59ccAI4fSbIBvvTjUEZuw&usqp=CAU",
+      "id": 2
+    },
+    {
+      "Name": "ramvatika",
+      "Owners_Name": "sita",
+      "Address": "hdvcvd",
+      "Area_Code": "345",
+      "Rent": "4566",
+      "Tenants": "Married",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnfBD8oiQixFsc59ccAI4fSbIBvvTjUEZuw&usqp=CAU",
+      "id": 3
+    },
+    {
+      "Name": "rome",
+      "Owners_Name": "hkj",
+      "Address": "bvvb",
+      "Area_Code": "67",
+      "Rent": "786",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnfBD8oiQixFsc59ccAI4fSbIBvvTjUEZuw&usqp=CAU",
+      "id": 4
+    },
+    {
+      "Name": "shyamvatika",
+      "Owners_Name": "diksha",
+      "Address": "har shyam vihar",
+      "Area_Code": "34",
+      "Rent": "8790",
+      "Tenants": "",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnfBD8oiQixFsc59ccAI4fSbIBvvTjUEZuw&usqp=CAU",
+      "id": 5
+    },
+    {
+      "Name": "ullu palace",
+      "Owners_Name": "ullu bisht",
+      "Address": "santoshimata mandir",
+      "Area_Code": "26",
+      "Rent": "7873",
+      "Tenants": "Married",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSnfBD8oiQixFsc59ccAI4fSbIBvvTjUEZuw&usqp=CAU",
+      "id": 6
+    }
+  ]
+}

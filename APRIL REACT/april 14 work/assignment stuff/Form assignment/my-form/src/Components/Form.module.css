@@ -1,0 +1,31 @@
+.grid{
+    display: grid;
+    grid-template-columns: 200px 200px;
+    margin-bottom: 10px;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+.submit{
+    width: 300px;
+    height: 40px;
+    background-color: rgb(11, 106, 90);
+    color: white;
+    margin-left: 70px;
+    border-radius: 10px;
+}
+.Tborder{
+    width: 100px;
+    border: 1px solid black;
+    border-collapse:  collapse;
+}
+.mytable{
+    width: 600px;
+    border: 1px solid black;
+    border-collapse:  collapse;
+    margin: auto;
+}

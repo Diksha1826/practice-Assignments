@@ -1,0 +1,44 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "redux",
+      "status": false
+    },
+    {
+      "id": "99b7925c-1740-4881-a691-cfd8fa7ce22c",
+      "title": "react ",
+      "status": false
+    },
+    {
+      "id": "9d0967e1-9eb0-40bf-8984-3e36070013e1",
+      "title": "learn devtool",
+      "status": false
+    },
+    {
+      "id": "e0e34f71-94bc-4f53-9271-97829902dab8",
+      "title": "react details",
+      "status": false
+    },
+    {
+      "id": "322da3ee-456a-4d82-9fa2-d137341196fb",
+      "title": "reactredg",
+      "status": false
+    },
+    {
+      "id": "ca3bd955-4d19-4134-8994-91395134be2c",
+      "title": "learn new stuff",
+      "status": false
+    },
+    {
+      "id": "cf9a871a-a002-457e-910a-1fa65f9d6a6c",
+      "title": "rtfgv",
+      "status": false
+    },
+    {
+      "id": "41878ee6-e277-4dee-8d4e-e5670ffa94ec",
+      "title": "hfgdfnb",
+      "status": false
+    }
+  ]
+}

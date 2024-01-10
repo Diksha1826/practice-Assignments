@@ -13,6 +13,8 @@
         <div id="navbar">
             <img onclick="gohome()" id="zomato" src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" >
             <div  class="sc-lewbHj bzCSpA" id="rahim"> 
+
+
             </div>
             <div id="login">
                 <p class="login1">Log in</p>
@@ -194,11 +196,42 @@
     import searchbar from './components/nav.js' ;
     document.getElementById("rahim").innerHTML = searchbar();
 
+
+
     document.getElementById("zomato").addEventListener("click" , function(){
         window.location.href = "home.html"
-
     })
 
+    document.getElementById("searchlogo").addEventListener("click" , function(){
+        getmenu()
+    })
 
+    function getmenu(){
+
+    let restaurantname = document.getElementById("restaurant_name").value ;
+
+
+    const url =  `https://foodiefetch.p.rapidapi.com/swiggy?query=${restaurantname}%20cafe%20pune`;
+    const options = {
+        method: 'GET' ,
+        headers: {
+            'X-RapidAPI-Key':'48935ed013msh97299e53deefea9p1f8345jsna3c9f5d9d6f0',
+            'X-RapidAPI-Host':'foodiefetch.p.rapidapi.com'
+        }
+    };
+
+    async function getdata(){
+    try{
+        const response = await fetch(url , options);
+        const result = await response.text();
+        console.log(result);
+    }catch(error){
+        console.log(error);
+    }
+ }
+
+getdata()
+    }
+    
 </script>
 </html>

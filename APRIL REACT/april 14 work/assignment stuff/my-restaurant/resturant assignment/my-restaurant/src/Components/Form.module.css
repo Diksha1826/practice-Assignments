@@ -1,0 +1,42 @@
+*{
+    background-color: rgb(242, 226, 248);
+}
+.grid{
+    display: grid;
+    grid-template-columns: 200px 200px;
+}
+.form{
+    width: 450px;
+    margin: auto;
+    
+}
+
+.mainform{
+    padding: 40px 0 ;
+    border-bottom: 4px solid black ;
+
+
+}
+.restaurantnav{
+    background-color: rgb(34, 9, 58);
+    font-size: 30px;
+    color: white;
+    height: 60px;
+    border-bottom: 3px solid white;
+}
+
+.restaurantgrid{
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    gap: 20px;
+    background-color: rgb(29, 2, 53);
+}
+.innerflex{
+    display: flex;
+    justify-content: space-around;
+}
+.gridinnerdiv{
+    border: 1px solid black;
+    border-radius: 15px;
+}

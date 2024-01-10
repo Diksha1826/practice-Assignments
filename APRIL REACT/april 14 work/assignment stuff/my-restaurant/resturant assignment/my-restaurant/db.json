@@ -1,0 +1,310 @@
+{
+  "restaurant_data": [
+    {
+      "id": 1,
+      "restaurant_name": "Macaca mulatta",
+      "categories": "LuctusNecMolestie cuisine",
+      "cost_for_one": "$2.08",
+      "payment_method": "Online",
+      "rating": 4,
+      "reviews": 88
+    },
+    {
+      "id": 2,
+      "restaurant_name": "Macropus rufogriseus",
+      "categories": "CondimentumCurabiturIn cuisine",
+      "cost_for_one": "$5.71",
+      "payment_method": "Online",
+      "rating": 4,
+      "reviews": 30
+    },
+    {
+      "id": 3,
+      "restaurant_name": "Scolopax minor",
+      "categories": "Leo cuisine",
+      "cost_for_one": "$9.10",
+      "payment_method": "COD",
+      "rating": 2,
+      "reviews": 131
+    },
+    {
+      "id": 6,
+      "restaurant_name": "Lycosa godeffroyi",
+      "categories": "VolutpatEleifend cuisine",
+      "cost_for_one": "$0.04",
+      "payment_method": "COD",
+      "rating": 1,
+      "reviews": 1722
+    },
+    {
+      "id": 7,
+      "restaurant_name": "Dicrostonyx groenlandicus",
+      "categories": "LeoOdioPorttitor cuisine",
+      "cost_for_one": "$8.26",
+      "payment_method": "COD",
+      "rating": 3,
+      "reviews": 72
+    },
+    {
+      "id": 8,
+      "restaurant_name": "Macropus agilis",
+      "categories": "LoremVitaeMattis cuisine",
+      "cost_for_one": "$6.22",
+      "payment_method": "COD",
+      "rating": 4,
+      "reviews": 16
+    },
+    {
+      "id": 9,
+      "restaurant_name": "Tachybaptus ruficollis ",
+      "categories": "VelIpsum cuisine",
+      "cost_for_one": "$4.27",
+      "payment_method": "Online",
+      "rating": 5,
+      "reviews": 305
+    },
+    {
+      "id": 10,
+      "restaurant_name": "Ardea cinerea",
+      "categories": "VolutpatConvallis cuisine",
+      "cost_for_one": "$9.07",
+      "payment_method": "Online",
+      "rating": 1,
+      "reviews": 280
+    },
+    {
+      "id": 11,
+      "restaurant_name": "Panthera onca",
+      "categories": "VenenatisTurpis cuisine",
+      "cost_for_one": "$1.03",
+      "payment_method": "Online",
+      "rating": 2,
+      "reviews": 32
+    },
+    {
+      "id": 12,
+      "restaurant_name": "Geochelone elegans",
+      "categories": "DiamIdOrnare cuisine",
+      "cost_for_one": "$2.32",
+      "payment_method": "COD",
+      "rating": 3,
+      "reviews": 0
+    },
+    {
+      "id": 13,
+      "restaurant_name": "Capreolus capreolus",
+      "categories": "Mediterranean cuisine",
+      "cost_for_one": "$6.04",
+      "payment_method": "Online",
+      "rating": 4,
+      "reviews": 270
+    },
+    {
+      "id": 14,
+      "restaurant_name": "Lasiorhinus latifrons",
+      "categories": "Maurisses cuisine",
+      "cost_for_one": "$3.79",
+      "payment_method": "Online",
+      "rating": 5,
+      "reviews": 555
+    },
+    {
+      "id": 15,
+      "restaurant_name": "Nectarinia chalybea",
+      "categories": "French cuisine",
+      "cost_for_one": "$2.51",
+      "payment_method": "COD",
+      "rating": 1,
+      "reviews": 435
+    },
+    {
+      "id": 16,
+      "restaurant_name": "Haliaetus leucogaster",
+      "categories": "Chinese cuisine",
+      "cost_for_one": "$9.35",
+      "payment_method": "Online",
+      "rating": 2,
+      "reviews": 6
+    },
+    {
+      "id": 17,
+      "restaurant_name": "Bos frontalis",
+      "categories": "Italian cuisine",
+      "cost_for_one": "$7.94",
+      "payment_method": "COD",
+      "rating": 3,
+      "reviews": 811
+    },
+    {
+      "id": 18,
+      "restaurant_name": "Pelecanus conspicillatus",
+      "categories": "Asian cuisine",
+      "cost_for_one": "$1.65",
+      "payment_method": "Online",
+      "rating": 4,
+      "reviews": 229
+    },
+    {
+      "id": 19,
+      "restaurant_name": "Chauna torquata",
+      "categories": "continental cuisine",
+      "cost_for_one": "$4.67",
+      "payment_method": "Online",
+      "rating": 5,
+      "reviews": 10
+    },
+    {
+      "id": 20,
+      "restaurant_name": "Corvus albicollis",
+      "categories": "NonSodalesSed cuisine",
+      "cost_for_one": "$8.75",
+      "payment_method": "COD",
+      "rating": 1,
+      "reviews": 10
+    },
+    {
+      "restaurant_name": "dominos",
+      "categories": "french cuisine",
+      "cost_for_one": "$25",
+      "payment_method": "Online",
+      "rating": "4",
+      "reviews": "69",
+      "id": 21
+    },
+    {
+      "restaurant_name": "bikanerwala",
+      "categories": "indian cuisine",
+      "cost_for_one": "$20",
+      "payment_method": "COD",
+      "rating": "5",
+      "reviews": "90",
+      "id": 22
+    },
+    {
+      "restaurant_name": "bik",
+      "categories": "nik",
+      "cost_for_one": "$56",
+      "payment_method": "COD",
+      "rating": "4",
+      "reviews": "78",
+      "id": 23
+    },
+    {
+      "restaurant_name": "fortune",
+      "categories": "continental",
+      "cost_for_one": "$100",
+      "payment_method": "COD",
+      "rating": "5",
+      "reviews": "309",
+      "id": 24
+    },
+    {
+      "restaurant_name": "romani",
+      "categories": "indian",
+      "cost_for_one": "$67",
+      "payment_method": "Online",
+      "rating": "4",
+      "reviews": "67",
+      "id": 25
+    },
+    {
+      "restaurant_name": "rameshwaram cafe",
+      "categories": "south indian",
+      "cost_for_one": "$12",
+      "payment_method": "Online",
+      "rating": "5",
+      "reviews": "78",
+      "id": 26
+    },
+    {
+      "restaurant_name": "uh",
+      "categories": "yuy",
+      "cost_for_one": "$87",
+      "payment_method": "COD",
+      "rating": "4",
+      "reviews": "78",
+      "id": 27
+    },
+    {
+      "restaurant_name": "yum",
+      "categories": "indian cuisine",
+      "cost_for_one": "$76",
+      "payment_method": "Online",
+      "rating": "3",
+      "reviews": "76",
+      "id": 28
+    },
+    {
+      "restaurant_name": "domi",
+      "categories": "continental",
+      "cost_for_one": "$3",
+      "payment_method": "Online",
+      "rating": "2",
+      "reviews": "45",
+      "id": 29
+    },
+    {
+      "restaurant_name": "ghf",
+      "categories": "fhfgj",
+      "cost_for_one": "$46",
+      "payment_method": "COD",
+      "rating": "1",
+      "reviews": "56",
+      "id": 30
+    },
+    {
+      "restaurant_name": "hgh",
+      "categories": "mnmnn",
+      "cost_for_one": "$9",
+      "payment_method": "Online",
+      "rating": "4",
+      "reviews": "7",
+      "id": 31
+    },
+    {
+      "restaurant_name": "bikanerwala",
+      "categories": "ahfdhgsfhg",
+      "cost_for_one": "$4",
+      "rating": "4",
+      "payment_method": "COD",
+      "reviews": "67",
+      "id": 32
+    },
+    {
+      "restaurant_name": "ytf",
+      "categories": "nbvvc",
+      "cost_for_one": "$5",
+      "rating": "04",
+      "payment_method": "",
+      "reviews": "65",
+      "id": 33
+    },
+    {
+      "restaurant_name": "",
+      "categories": "",
+      "cost_for_one": "$",
+      "rating": 0,
+      "payment_method": "",
+      "reviews": "",
+      "id": 34
+    },
+    {
+      "restaurant_name": "domi",
+      "categories": "hfg",
+      "cost_for_one": "$",
+      "rating": "03",
+      "payment_method": "Online",
+      "reviews": "56",
+      "id": 35
+    },
+    {
+      "restaurant_name": "yghfg",
+      "categories": "nmbnv",
+      "cost_for_one": "396",
+      "rating": "3",
+      "payment_method": "COD",
+      "reviews": "45",
+      "id": 36
+    }
+  ]
+}

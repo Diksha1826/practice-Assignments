@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* width: 100%; */
+}
+body{
+    background-color: rgb(178, 223, 178);
+
+}
+nav{
+    background-color:rgb(5, 77, 54) ;
+    color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-family: Alkatra ;
+    margin-bottom: 80px;
+
+}
+
+nav ul{
+    list-style: none;
+    font-size: 2vw;
+}
+
+.gamecontainer{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    font-family: Alkatra ;
+
+
+}
+
+.container{
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-columns: repeat(3 , 10vw);
+    grid-template-rows: repeat(3 , 10vw);
+    position: relative;
+}
+ .box{
+    border: 2px solid black;
+    font-size: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Roboto ;
+
+    
+}
+.box:hover{
+    background-color: rgb(193, 224, 193);
+    cursor: pointer;
+}
+.gameinfo{
+    padding: 0 60px;
+    font-size: 20px;
+}
+.info{
+    font-size: 23px;
+}
+.imgbox img{
+    width: 0;
+    transition: width 1s ease-in-out;
+    
+}
+.br-0{
+    border-right: 0;
+}
+.bl-0{
+    border-left: 0;
+}
+.bu-0{
+    border-top: 0;
+}
+.bd-0{
+    border-bottom: 0;
+}
+#reset{
+    margin: 0 30px;
+    padding: 4px 19px;
+    background-color: rgb(158, 217, 193);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+#reset:hover{
+    background-color: rgb(174, 224, 207);
+}
+.gameinfo h1{
+    font-size: 2.5rem;
+}
+@media screen and (max-width: 950px){
+   
+
+    .gamecontainer{
+        flex-wrap: wrap;
+        align-items: center;
+        text-align: center;
+    }
+    .gameinfo{
+        margin-top: 30px;
+    }
+    .gameinfo h1{
+        font-size: 2rem;
+    }
+    nav ul li{
+        font-size: 1.5rem;
+    }
+    .container{
+        grid-template-columns: repeat(3 , 20vw);
+        grid-template-rows: repeat(3 , 20vw);
+    }
+  }
+
+  .line{
+    width: 0vw ;
+    height: 3px;
+    position: absolute;
+    background-color: black;
+    transition: width 1s ease-in-out;
+    /* display: none; */
+    /* transform: translate() rotate(); */
+  }

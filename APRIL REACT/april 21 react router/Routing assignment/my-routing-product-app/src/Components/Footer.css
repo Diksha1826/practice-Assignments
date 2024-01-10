@@ -1,0 +1,65 @@
+
+.footer{
+    display: flex ;
+    height: 50px;
+    background: linear-gradient(to bottom right , black , rgb(76, 79, 79) ) ;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0  20px;
+    
+}
+.footerinn{
+    display: flex;
+    width: 200px;
+    justify-content: space-evenly;
+    /* color: rgb(19, 47, 64); */
+}
+.footerinn h4:hover{
+    color: rgb(108, 106, 102);
+}
+
+.footerinn img{
+    width: 30px;
+}
+.footerinn img:hover{
+    background-color: rgb(108, 106, 102);
+}
+
+
+/* body */
+.body{
+  height: 83vh;
+  position: relative;
+}
+.bodybackground::before{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 500px;
+    width: 100%;
+    opacity: .7;
+    background-image: url('https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=1400') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-attachment: scroll; */
+    background-size: cover;
+}
+.bodybackground h1{
+    position: relative;
+    font-size: 60px; 
+    margin: 0;
+    padding-top: 100px;
+    font-family: 'Ubuntu'  ;
+}
+.bodybackground p{
+    position: relative;
+    opacity: .9;
+
+}
+
+
+
+

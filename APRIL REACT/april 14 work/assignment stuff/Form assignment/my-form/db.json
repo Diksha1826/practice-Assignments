@@ -1,0 +1,66 @@
+{
+  "data": [
+    {
+      "Name": "diksha",
+      "Age": "23",
+      "Address": "har shyam vihar",
+      "Department": "IT",
+      "Salary": "2500000",
+      "Marital_status": "false",
+      "id": 1
+    },
+    {
+      "Name": "radha",
+      "Age": "25",
+      "Address": "har shyam vihar",
+      "Department": "operation",
+      "Salary": "2599999",
+      "Marital_status": "true",
+      "id": 2
+    },
+    {
+      "Name": "madhav",
+      "Age": "25",
+      "Address": "radhe kunj",
+      "Department": "administration",
+      "Salary": "25999998",
+      "Marital_status": "true",
+      "id": 3
+    },
+    {
+      "Name": "gopi",
+      "Age": "65",
+      "Address": "krishn keli",
+      "Department": "finance",
+      "Salary": "74568734",
+      "Marital_status": "true",
+      "id": 4
+    },
+    {
+      "Name": "partha",
+      "Age": "23",
+      "Address": "govind  nivas",
+      "Department": "IT",
+      "Salary": "25000000",
+      "Marital_status": true,
+      "id": 5
+    },
+    {
+      "Name": "aman",
+      "Age": "23",
+      "Address": "radha keli kunj",
+      "Department": "sales",
+      "Salary": "65645",
+      "Marital_status": false,
+      "id": 6
+    },
+    {
+      "Marital_status": true,
+      "Name": "amit ",
+      "Age": "56",
+      "Address": "hvgvg",
+      "Salary": "65",
+      "id": 7
+    }
+  ]
+}
